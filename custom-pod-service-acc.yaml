@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: custom-pod
+  name: custom-pod
+spec:
+  serviceAccountName: test-sa
+  containers:
+  - image: nginx
+    name: custom-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
