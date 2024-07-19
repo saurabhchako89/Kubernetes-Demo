@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+  labels:
+    name: mycache
+    type: nginx
+spec:
+  template:
+    metadata:
+      name: mycache
+      labels:
+        type: nginx
+        app: mycache
+    spec:
+      containers: 
+          - name: nginx-containers
+            image: nginx
+            resources:
+              limits:
+                memory: "128Mi"
+                cpu: "500m"
+  replicas: 3
+  selector: 
+    matchLabels:
+      type: nginx
